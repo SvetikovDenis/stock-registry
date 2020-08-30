@@ -93,6 +93,10 @@ public class StockServiceImpl implements StockService {
     @Override
     public Stock save(Stock stock) {
         Status status = stockStatusService.getByName("ACTIVE");
+        if (status == null) {
+            log.warn("In save - status with name : {} was not found", "ACTIVE");
+            throw new EntityNotFoundException(Status.class, "name", "ACTIVE");
+        }
         stock.setStatus(status);
         Stock newStock = stockRepository.save(stock);
         log.info("In save - stock : {} was saved", stock);
@@ -103,6 +107,10 @@ public class StockServiceImpl implements StockService {
     public StockDTO saveDTO(StockDTO stock) {
         Stock stockCandidate = stockDTOMapper.toEntity(stock);
         Status status = stockStatusService.getByName("ACTIVE");
+        if (status == null) {
+            log.warn("In saveDTO - status with name : {} was not found", "ACTIVE");
+            throw new EntityNotFoundException(Status.class, "name", "ACTIVE");
+        }
         stockCandidate.setStatus(status);
         stockCandidate = stockRepository.save(stockCandidate);
         return stockDTOMapper.toDto(stockCandidate);
@@ -134,7 +142,11 @@ public class StockServiceImpl implements StockService {
             log.warn("In delete - stock : {} was not found", stock);
             throw new EntityNotFoundException(Stock.class, "id", stock.getId().toString());
         }
-        Status deleted = Status.builder().id(2l).name("DELETED").build();
+        Status deleted = stockStatusService.getByName("DELETED");
+        if (deleted == null) {
+            log.warn("In deleteById - status with name : {} was not found", "DELETED");
+            throw new EntityNotFoundException(Status.class, "name", "DELETED");
+        }
         stockCandidate.setStatus(deleted);
         stockRepository.save(stockCandidate);
         log.info("In delete - stock : {} was deleted", stock);
@@ -148,7 +160,11 @@ public class StockServiceImpl implements StockService {
             log.warn("In deleteById - stock with id : {} was not found", id);
             throw new EntityNotFoundException(Stock.class, "id", id.toString());
         }
-        Status deleted = Status.builder().id(2l).name("DELETED").build();
+        Status deleted = stockStatusService.getByName("DELETED");
+        if (deleted == null) {
+            log.warn("In deleteById - status with name : {} was not found", "DELETED");
+            throw new EntityNotFoundException(Status.class, "name", "DELETED");
+        }
         stockCandidate.setStatus(deleted);
         stockRepository.save(stockCandidate);
         log.info("In deleteById - stock with id : {} was deleted", id);
@@ -157,6 +173,10 @@ public class StockServiceImpl implements StockService {
     @Override
     public void saveAll(List<Stock> stocks) {
         Status status = stockStatusService.getByName("ACTIVE");
+        if (status == null) {
+            log.warn("In saveAll - status with name : {} was not found", "ACTIVE");
+            throw new EntityNotFoundException(Status.class, "name", "ACTIVE");
+        }
         for (Stock stock : stocks) {
             stock.setStatus(status);
         }
