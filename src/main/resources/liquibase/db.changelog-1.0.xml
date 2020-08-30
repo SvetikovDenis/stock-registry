@@ -1,0 +1,100 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="1.0.0" author="denis.svetikov">
+        <createTable tableName="stock_status">
+
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(25)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+
+
+    <changeSet id="1.0.1" author="denis.svetikov">
+        <createTable tableName="stock_detail">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="comment" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="edrpou" type="varchar(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="quantity" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="nominal_value" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="total_value" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="issue_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+
+    <changeSet id="1.0.2" author="denis.svetikov">
+        <addForeignKeyConstraint baseColumnNames="status_id"
+                                 baseTableName="stock_detail"
+                                 constraintName="fk_stock_status_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="stock_status"/>
+    </changeSet>
+
+
+    <changeSet id="1.0.3" author="denis.svetikov">
+        <createTable tableName="stock_change_log">
+
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="edrpou" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="column_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="previous_value" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="current_value" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+
+
+</databaseChangeLog>

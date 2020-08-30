@@ -1,0 +1,66 @@
+[
+  {
+    "comment" : "Apple Inc. is an American multinational technology company headquartered in Cupertino, California",
+    "edrpou" : "AA3DFAAFS",
+    "quantity" : "1000",
+    "nominalValue": "100",
+    "totalValue": "100000",
+    "issueDate": "2019-01-01",
+    "status": "ACTIVE"
+  },
+  {
+    "comment" : "PrivatBank is the largest commercial bank in Ukraine, in terms of the number of clients, assets value.",
+    "edrpou" : "AA35623AFS",
+    "quantity" : "10",
+    "nominalValue" : "25",
+    "totalValue" : "250",
+    "issueDate" : "2001-02-02",
+    "status": "ACTIVE"
+  },
+  {
+    "comment" : "Bayerische Motoren Werke AG, commonly referred to as BMW, is a German multinational company",
+    "edrpou" : "AA78235TBF",
+    "quantity" : "5",
+    "nominalValue": "5",
+    "totalValue": "25",
+    "issueDate": "1998-03-21",
+    "status": "ACTIVE"
+  },
+  {
+    "comment" : "Facebook, Inc. is an American social media conglomerate corporation based in Menlo Park, California.",
+    "edrpou" : "AA345GDSADFS",
+    "quantity" : "25000",
+    "nominalValue": "50",
+    "totalValue": "1250000",
+    "issueDate": "2006-08-12",
+    "status": "ACTIVE"
+  },
+  {
+    "comment" : "Google LLC is an American multinational technology company that specializes in Internet-related services and products",
+    "edrpou" : "GHDFS345GAFS",
+    "quantity" : "500",
+    "nominalValue": "5",
+    "totalValue": "2500",
+    "issueDate": "2008-07-12",
+    "status": "ACTIVE"
+  },
+  {
+    "comment" : "DescriptionZoom Video Communications, Inc. is an American communications technology company headquartered in San Jose, California. ",
+    "edrpou" : "AA3ADGXHFFGAFS",
+    "quantity" : "75",
+    "nominalValue": "10",
+    "totalValue": "750",
+    "issueDate": "2009-04-06",
+    "status": "ACTIVE"
+  },
+  {
+    "comment" : "ZAZ or Zaporizhia Automobile Building Plant is the main automobile manufacturer of Ukraine, based in the south-eastern city of Zaporizhia. ",
+    "edrpou" : "AA3DHDSEGAFS",
+    "quantity" : "50",
+    "nominalValue": "25",
+    "totalValue": "1250",
+    "issueDate": "1995-03-09",
+    "status": "ACTIVE"
+  }
+]
+
