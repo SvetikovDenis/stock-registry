@@ -2,20 +2,19 @@ package com.svetikov.stockregistry.rest;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.svetikov.stockregistry.dto.StockDTO;
-import com.svetikov.stockregistry.model.Stock;
 import com.svetikov.stockregistry.service.StockService;
 import com.svetikov.stockregistry.specification.StockSearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Min;
 import java.util.List;
 
 @RestController
+@Validated
 @RequestMapping("api/v1/stock")
 public class StockRESTController {
 
@@ -23,8 +22,12 @@ public class StockRESTController {
     private StockService stockService;
 
     @GetMapping("")
-    public ResponseEntity<List<StockDTO>> getAllStocks(StockSearchCriteria request, Pageable pageable) {
-        List<StockDTO> stocks = stockService.getAllDTO(request, pageable);
+    public ResponseEntity<List<StockDTO>> getAllStocks(
+            StockSearchCriteria request,
+            @RequestParam(name = "page", required = false, defaultValue = "0") @Min(0) Integer page,
+            @RequestParam(name = "size", required = false, defaultValue = "10") @Min(0)  Integer size) {
+
+        List<StockDTO> stocks = stockService.getAllDTO(request, page, size);
         return new ResponseEntity<>(stocks, HttpStatus.OK);
     }
 

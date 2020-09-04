@@ -37,8 +37,7 @@ public class LoadJSONDatabase implements ApplicationListener<ContextRefreshedEve
 
     private void loadStatusData() {
         ObjectMapper objectMapper = new ObjectMapper();
-        TypeReference<List<Status>> typeReference = new TypeReference<List<Status>>() {
-        };
+        TypeReference<List<Status>> typeReference = new TypeReference<List<Status>>() {};
         InputStream inputStream = TypeReference.class.getResourceAsStream(STATUS_JSON_FILE);
         try {
             List<Status> statuses = objectMapper.readValue(inputStream, typeReference);
@@ -50,8 +49,7 @@ public class LoadJSONDatabase implements ApplicationListener<ContextRefreshedEve
 
     private void loadStockData() {
         ObjectMapper objectMapper = new ObjectMapper();
-        TypeReference<List<StockDTO>> typeReference = new TypeReference<List<StockDTO>>() {
-        };
+        TypeReference<List<StockDTO>> typeReference = new TypeReference<List<StockDTO>>() {};
         InputStream inputStream = TypeReference.class.getResourceAsStream(STOCK_JSON_FILE);
         try {
             List<StockDTO> stockDTOS = objectMapper.readValue(inputStream, typeReference);

@@ -11,7 +11,7 @@ public interface StockService {
 
     List<Stock> getAll();
 
-    List<StockDTO> getAllDTO(StockSearchCriteria request,Pageable pageable);
+    List<StockDTO> getAllDTO(StockSearchCriteria request, Integer page, Integer size);
 
     Stock getById(Long id);
 

@@ -51,9 +51,14 @@ public class StockServiceImpl implements StockService {
     }
 
     @Override
-    public List<StockDTO> getAllDTO(StockSearchCriteria request, Pageable pageable) {
+    public List<StockDTO> getAllDTO(StockSearchCriteria request, Integer page, Integer size) {
+
+        if (page < 0 || size <= 0) {
+            return new ArrayList<>();
+        }
+
         Page<Stock> stocks = stockRepository.findAll(
-                stockSpecification.getFilter(request), PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()));
+                stockSpecification.getFilter(request), PageRequest.of(page, size));
         if (stocks.getTotalElements() == 0) {
             log.warn("In getAllDTO - no stocks was found for request parameters : " + request.toString());
             throw new EntityNotFoundException(Stock.class, "search request", request.toString());
@@ -137,7 +142,7 @@ public class StockServiceImpl implements StockService {
 
     @Override
     public void delete(Stock stock) {
-        Stock stockCandidate = stockRepository.getOne(stock.getId());
+        Stock stockCandidate = stockRepository.getById(stock.getId());
         if (stockCandidate == null) {
             log.warn("In delete - stock : {} was not found", stock);
             throw new EntityNotFoundException(Stock.class, "id", stock.getId().toString());
@@ -155,7 +160,7 @@ public class StockServiceImpl implements StockService {
 
     @Override
     public void deleteById(Long id) {
-        Stock stockCandidate = stockRepository.getOne(id);
+        Stock stockCandidate = stockRepository.getById(id);
         if (stockCandidate == null) {
             log.warn("In deleteById - stock with id : {} was not found", id);
             throw new EntityNotFoundException(Stock.class, "id", id.toString());

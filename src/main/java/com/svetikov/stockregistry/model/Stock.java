@@ -43,4 +43,12 @@ public class Stock extends AbstractEntity{
         setTotalValue(getNominalValue() * getQuantity());
     }
 
+    @PreUpdate
+    public void updateTotalValue() {
+        Integer totalValue = getQuantity() * getNominalValue();
+        if (totalValue != getTotalValue()) {
+            setTotalValue(totalValue);
+        }
+    }
+
 }
