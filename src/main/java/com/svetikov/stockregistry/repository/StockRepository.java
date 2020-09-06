@@ -11,7 +11,6 @@ public interface StockRepository extends JpaRepository<Stock,Long>, JpaSpecifica
 
     Stock getById(Long id);
 
-
     @Query("select count(s.id) from Stock as s")
     Long countAllById();
 

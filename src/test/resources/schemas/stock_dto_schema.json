@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Stock JSON Schema",
+    "required": [
+      "id",
+      "comment",
+      "edrpou",
+      "quantity",
+      "nominalValue",
+      "totalValue",
+      "issueDate",
+      "status"
+    ],
+    "properties": {
+      "id":           { "type": "number" },
+      "comment":      { "type": "string" },
+      "edrpou":       { "type": "string" },
+      "quantity":     { "type": "number" },
+      "nominalValue": { "type": "number" },
+      "totalValue":   { "type": "number" },
+      "issueDate":    { "type": "string" },
+      "status":       { "type": "string" }
+    }
+}

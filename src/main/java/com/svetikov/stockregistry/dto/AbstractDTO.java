@@ -16,7 +16,6 @@ public class AbstractDTO implements Serializable {
     @JsonView({StandardView.class, DetailView.class})
     Long id;
 
-
     public interface New {
     }
 

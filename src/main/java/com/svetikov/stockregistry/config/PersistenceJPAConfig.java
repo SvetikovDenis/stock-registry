@@ -21,7 +21,6 @@ import java.util.Map;
 @EnableJpaRepositories(basePackages = {"com.svetikov.stockregistry"})
 public class PersistenceJPAConfig {
 
-
     @Autowired
     private ApplicationContext applicationContext;
 

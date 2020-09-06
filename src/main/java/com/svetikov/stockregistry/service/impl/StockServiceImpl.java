@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -173,6 +172,12 @@ public class StockServiceImpl implements StockService {
         stockCandidate.setStatus(deleted);
         stockRepository.save(stockCandidate);
         log.info("In deleteById - stock with id : {} was deleted", id);
+    }
+
+    @Override
+    public void deleteFromDB(Long id) {
+        stockRepository.deleteById(id);
+        log.info("In deleteFromDB - stock with id : {} was deleted from database", id);
     }
 
     @Override

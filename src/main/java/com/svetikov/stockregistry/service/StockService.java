@@ -31,6 +31,8 @@ public interface StockService {
 
     void deleteById(Long id);
 
+    void deleteFromDB(Long id);
+
     Long getStockNumber();
 
 }
